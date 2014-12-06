@@ -16,7 +16,7 @@
     "source_ami": "{{user `source_ami`}}",
     "instance_type": "{{user `instance_type`}}",
     "ssh_username": "ubuntu",
-    "ami_name": "{{user `name`}}-{{timestamp}}"
+    "ami_name": "{{user `name`}}-{{isotime | clean_ami_name}}"
   }],
   "provisioners": [
     {
