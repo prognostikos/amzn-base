@@ -18,11 +18,47 @@ sudo chmod 0440 /etc/sudoers.d/deploy
 sudo chown -R deploy:deploy /home/deploy
 sudo chmod -R +x /home/deploy/bin
 
+# Add additional PPAs here even if they're only used by framework-specific
+# packages so we only need to run apt-get update once
+sudo apt-get install -y --force-yes python-software-properties
+sudo apt-add-repository -y ppa:brightbox/ruby-ng
+sudo apt-add-repository -y ppa:nginx/stable
+
+sudo apt-get update -y
+
+sudo unattended-upgrade
+
 # Install software that will be present on all AMIs
 # Checkout the frameworks directory for framework specific software
 # e.g. Ruby on Rails
+sudo apt-get install -y --force-yes \
+  bind9-host \
+  build-essential \
+  curl \
+  dnsutils \
+  git \
+  htop \
+  iftop \
+  iputils-tracepath \
+  lsof \
+  mosh \
+  mtr \
+  netcat-openbsd \
+  ngrep \
+  nmap \
+  ntp \
+  python-pip \
+  rsyslog-gnutls \
+  rsync \
+  socat \
+  strace \
+  sysstat \
+  tcpflow \
+  tmux \
+  tree \
+  vim-nox \
+  zip \
+  #
+
 # We use the aws-cli to fetch data from S3 using IAM Roles.
-sudo apt-get update -y
-sudo unattended-upgrade
-sudo apt-get install build-essential htop curl python-pip ntp rsyslog-gnutls -y
 sudo pip install awscli
