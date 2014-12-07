@@ -21,6 +21,7 @@ sudo apt-get install -y --force-yes \
   npm \
   postgresql-client-9.3 \
   ruby2.1 \
+  ruby2.1-dev \
   zlib1g-dev \
   #
 
