@@ -1,5 +1,7 @@
 set -ex
 
+echo 'gem: --no-rdoc --no-ri' | sudo tee /etc/gemrc
+
 sudo apt-get install -y --force-yes \
   imagemagick \
   libbz2-dev \
@@ -19,10 +21,10 @@ sudo apt-get install -y --force-yes \
   nginx \
   nodejs \
   npm \
-  postgresql-client-9.3 \
+  postgresql-client-9.4 \
   ruby2.1 \
   ruby2.1-dev \
   zlib1g-dev \
   #
 
-sudo gem install --no-ri --no-rdoc bundler
+sudo gem install bundler

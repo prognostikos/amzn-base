@@ -18,11 +18,17 @@ sudo chmod 0440 /etc/sudoers.d/deploy
 sudo chown -R deploy:deploy /home/deploy
 sudo chmod -R +x /home/deploy/bin
 
+sudo apt-get update -y --fix-missing
+
 # Add additional PPAs here even if they're only used by framework-specific
 # packages so we only need to run apt-get update once
 sudo apt-get install -y --force-yes python-software-properties
 sudo apt-add-repository -y ppa:brightbox/ruby-ng
 sudo apt-add-repository -y ppa:nginx/stable
+
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+sudo apt-get install -y --force-yes wget ca-certificates
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 sudo apt-get update -y
 
@@ -42,7 +48,7 @@ sudo apt-get install -y --force-yes \
   iputils-tracepath \
   lsof \
   mosh \
-  mtr \
+  mtr-tiny \
   netcat-openbsd \
   ngrep \
   nmap \
